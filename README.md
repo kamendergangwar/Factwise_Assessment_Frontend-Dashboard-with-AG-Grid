@@ -1,21 +1,23 @@
 # Factwise Employee Dashboard
 
-A React + Vite dashboard using **AG Grid (client-side row model)** to display and analyze employee records.
+A React + Vite dashboard using **AG Grid (client-side row model)** to manage and analyze employee data.
 
 ## Features
 
 - AG Grid table with:
   - Sorting
-  - Column filtering
+  - Filtering
   - Quick search
   - Row selection
   - Pagination
   - CSV export
-- Department and location filters
-- KPI strip (visible employees, active workforce, avg salary, avg rating)
-- Analytics tabs:
-  - `Overview`
-  - `Insights` (Department Mix, Location Distribution, Salary Bands)
+- Filters for:
+  - Department
+  - Location
+  - Level
+- KPI cards (headcount, active workforce, avg salary, avg performance)
+- Analytics cards (department mix, location spread, salary bands)
+- Theme toggle (Light/Dark)
 - Responsive layout for desktop and mobile
 
 ## Tech Stack
@@ -27,10 +29,11 @@ A React + Vite dashboard using **AG Grid (client-side row model)** to display an
 
 ## Project Structure
 
-- `src/App.jsx` - dashboard layout, dataset, grid config, filters, analytics logic
-- `src/App.css` - dashboard and AG Grid styling
-- `src/main.jsx` - app bootstrap and AG Grid module registration
-- `src/index.css` - global styles and font import
+- `src/App.jsx` - dashboard UI, AG Grid config, filters, KPI/analytics logic
+- `src/App.css` - complete dashboard and AG Grid styling
+- `src/data/employeeData.js` - employee dataset source
+- `src/main.jsx` - app bootstrap + AG Grid module registration
+- `src/index.css` - global styles
 
 ## Getting Started
 
@@ -40,7 +43,7 @@ A React + Vite dashboard using **AG Grid (client-side row model)** to display an
 npm install
 ```
 
-### 2. Run development server
+### 2. Start dev server
 
 ```bash
 npm run dev
@@ -64,24 +67,20 @@ npm run preview
 npm run lint
 ```
 
-## AG Grid Notes
+## AG Grid Setup
 
-- Community modules are registered in `src/main.jsx`:
+Modules are registered in `src/main.jsx`:
 
 ```js
 ModuleRegistry.registerModules([AllCommunityModule])
 ```
 
-- Grid is configured for client-side rendering with local data.
+The grid runs fully client-side using local data imported from:
 
-## Current Dataset
+- `src/data/employeeData.js`
 
-The dashboard uses a local employee dataset (20 rows) embedded in `src/App.jsx`.
+## Notes
 
-## Customization Ideas
-
-- Move dataset to `src/data/employees.json` and fetch it dynamically
-- Add saved filter presets (Engineering, Finance, etc.)
-- Add charts via AG Charts or Recharts for richer visual analytics
-- Add dark theme toggle
+- First column (`S.No`) is serial numbering based on visible rows (not employee ID).
+- Theme mode defaults to **Light** and can be switched from the top bar.
 
