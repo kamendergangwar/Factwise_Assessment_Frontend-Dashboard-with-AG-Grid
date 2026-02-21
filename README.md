@@ -1,17 +1,87 @@
-# React + Vite
+# Factwise Employee Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React + Vite dashboard using **AG Grid (client-side row model)** to display and analyze employee records.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- AG Grid table with:
+  - Sorting
+  - Column filtering
+  - Quick search
+  - Row selection
+  - Pagination
+  - CSV export
+- Department and location filters
+- KPI strip (visible employees, active workforce, avg salary, avg rating)
+- Analytics tabs:
+  - `Overview`
+  - `Insights` (Department Mix, Location Distribution, Salary Bands)
+- Responsive layout for desktop and mobile
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React 19
+- Vite 7
+- AG Grid Community 35
+- ESLint 9
 
-## Expanding the ESLint configuration
+## Project Structure
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-# Factwise_Assessment_Frontend-Dashboard-with-AG-Grid
+- `src/App.jsx` - dashboard layout, dataset, grid config, filters, analytics logic
+- `src/App.css` - dashboard and AG Grid styling
+- `src/main.jsx` - app bootstrap and AG Grid module registration
+- `src/index.css` - global styles and font import
+
+## Getting Started
+
+### 1. Install dependencies
+
+```bash
+npm install
+```
+
+### 2. Run development server
+
+```bash
+npm run dev
+```
+
+### 3. Build for production
+
+```bash
+npm run build
+```
+
+### 4. Preview production build
+
+```bash
+npm run preview
+```
+
+### 5. Run lint
+
+```bash
+npm run lint
+```
+
+## AG Grid Notes
+
+- Community modules are registered in `src/main.jsx`:
+
+```js
+ModuleRegistry.registerModules([AllCommunityModule])
+```
+
+- Grid is configured for client-side rendering with local data.
+
+## Current Dataset
+
+The dashboard uses a local employee dataset (20 rows) embedded in `src/App.jsx`.
+
+## Customization Ideas
+
+- Move dataset to `src/data/employees.json` and fetch it dynamically
+- Add saved filter presets (Engineering, Finance, etc.)
+- Add charts via AG Charts or Recharts for richer visual analytics
+- Add dark theme toggle
+
